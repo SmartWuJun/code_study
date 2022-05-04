@@ -1,33 +1,41 @@
 (function (modules) {
-  function require (filePath) {
+  function require (id) {
 
 
-    let fun = modules[filePath];
+    let [fun, mapping] = modules[id];
     let module = {
       exports: {}
     }
-    fun(require, module, module.exports)
+    let localRequire = function (filePath) {
+      let tempId = mapping[filePath];
+      return require(tempId);
+    }
+
+    fun(localRequire, module, module.exports)
 
     return module.exports
   }
 
-  require('./main.js');
+  require(0);
 
 })({
-  './foo.js': function (require, module, exports) {
+
+  0: [function (require, module, exports) {
+    const { foo } = require('./foo.js');
+    console.log('main.js')
+    foo('wujun');
+  }, {
+    './foo.js': 1
+  }],
+  1: [function (require, module, exports) {
     function foo (val) {
       console.log('foo.js:', val)
     }
 
     module.exports = { foo };
 
-  }
-  ,
-  './main.js': function (require, module, exports) {
-    const { foo } = require('./foo.js');
-    console.log('main.js')
-    foo('wujun');
-  }
+  }, {}]
+
 })
 
 
