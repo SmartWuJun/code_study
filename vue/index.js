@@ -14,7 +14,7 @@ Vue.prototype.$mount = function (el) {
 
   new Watcher(this, () => {
 
-    let content = `名称：${this.name}; 计算属性： ${this.msg}`;
+    let content = `名称：${this.name}; 计算属性： ${this.newMsg}`;
 
     document.getElementById(el).innerHTML = content;
   })

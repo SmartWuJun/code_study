@@ -19,11 +19,15 @@
     let app=new Vue({
       data:{
         name:'樱木',
-        age:18
+        age:18,
+        info:'火影忍者'
       },
       computed:{
         msg(){
           return this.name+this.age;
+        },
+        newMsg(){
+          return `新计算属性： ${this.msg}, ${this.info}`
         }
       }
     });
