@@ -1,30 +1,23 @@
 
 
 function Vue (options) {
-
-  this._options = options;
+  this.$options = options;
 
   let { data } = options;
   this._data = data;
 
-  initState(data)
+  initState(this)
 
 }
 
 Vue.prototype.$mount = function (el) {
 
   new Watcher(this, () => {
-    let content = `名称：${this._data.name}，年龄：${this._data.age}`;
+
+    let content = `名称：${this.name}; 计算属性： ${this.msg}`;
 
     document.getElementById(el).innerHTML = content;
   })
 
 }
 
-
-
-
-function initState (data) {
-  observe(data)
-
-}

@@ -10,6 +10,7 @@
 <body>
   <div id="app"></div>
 
+  <script  src="./state.js"></script>
   <script  src="./dep.js"></script>
   <script  src="./watcher.js"></script>
   <script  src="./observer.js"></script>
@@ -20,17 +21,27 @@
       data:{
         name:'樱木',
         age:18
+      },
+      computed:{
+        msg(){
+          return this.name+this.age;
+        }
       }
     });
     app.$mount('app')
+    console.log('app: ', app);
     setTimeout(() => {
-      // app._data.name='7788';
-      app._data.age=26
+      // app.name='7788';
+      app.age=26
     }, 2000);
+    setTimeout(() => {
+      app.name='流川枫';
+      // app.age=26
+    }, 6000);
 
-    new Watcher(app,'age',()=>{
-      console.log('年龄更新')
-    })
+    // new Watcher(app,'age',()=>{
+    //   console.log('年龄更新')
+    // })
   
     
   </script>
