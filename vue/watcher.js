@@ -22,7 +22,9 @@ class Watcher {
     if (typeof expOrFn === 'function') {
       this.getter = expOrFn
     } else {
-      this.getter = function (obj) { return obj[expOrFn] }
+      this.getter = function (obj) {
+        return obj[expOrFn];
+      };
     }
     //一开始 计算属性不需要计算 
     this.value = this.lazy ? undefined : this.get();
