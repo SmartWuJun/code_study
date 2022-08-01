@@ -52,15 +52,22 @@ class Watcher {
     return value;
 
   }
+  run () {
+    let value = this.get();
+    let oldValue = this.value;
+    this.cb && this.cb.call(this.vm, value, oldValue);
+  }
   update () {
     //计算属性
     if (this.lazy) {
       this.dirty = true;
       console.log('computed update')
     } else {
-      this.get();
-      this.cb && this.cb()
+      // this.get();
+      // this.cb && this.cb()
       console.log('watcher update')
+
+      queueWatcher(this)
     }
 
   }
