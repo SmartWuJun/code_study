@@ -1,0 +1,26 @@
+{
+  "name": "rollup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^2.75.7"
+  },
+  "dependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/plugin-transform-runtime": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@vue/compiler-sfc": "^3.2.37",
+    "babel-plugin-import": "^1.13.5",
+    "element-ui": "^2.15.9",
+    "rollup-plugin-vue": "^6.0.0"
+  }
+}
