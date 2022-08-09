@@ -1,3 +1,8 @@
+/*
+ * @Author: WUJUN
+ * @Date: 2022-08-02 09:05:06
+ * @Description:
+ */
 let has = {};
 let queue = [];
 
@@ -9,7 +14,7 @@ let index = 0;
 /**
  * Reset the scheduler's state.
  */
-function resetSchedulerState () {
+function resetSchedulerState() {
   index = queue.length = 0;
   has = {};
 
@@ -18,8 +23,8 @@ function resetSchedulerState () {
 /**
  * Flush both queues and run the watchers.
  */
-function flushSchedulerQueue () {
-
+function flushSchedulerQueue() {
+  console.log("queue: ", queue);
   flushing = true; // 将 flushing 置为 true，代表正在刷新队列
   let watcher, id;
 
@@ -51,16 +56,13 @@ function flushSchedulerQueue () {
     // 执行 watcher 的 run 去执行相应的更新函数进行页面更新
     // watcher.run 实际上也就是调用 updateComponent 进到页面挂载
     watcher.run();
-
   }
-
 
   // 重置，将 flushing 置为 false
   resetSchedulerState();
-
 }
 
-function queueWatcher (watcher) {
+function queueWatcher(watcher) {
   let id = watcher.id;
   // 同一个属性多次操作 watcher 只记录一次
   if (!has[id]) {
@@ -82,10 +84,7 @@ function queueWatcher (watcher) {
     if (!waiting) {
       waiting = true;
 
-      nextTick(flushSchedulerQueue)
+      nextTick(flushSchedulerQueue);
     }
-
   }
-
-
 }

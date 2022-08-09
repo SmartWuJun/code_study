@@ -9,46 +9,50 @@
   <body>
     <div id="app"></div>
 
-  <script  src="./state.js"></script>
-  <script  src="./scheduler.js"></script>
-  <script  src="./next-tick.js"></script>
-  <script  src="./dep.js"></script>
-  <script  src="./watcher.js"></script>
-  <script  src="./observer.js"></script>
-  <script  src="./index.js"></script>
+    <script src="./state.js"></script>
+    <script src="./scheduler.js"></script>
+    <script src="./next-tick.js"></script>
+    <script src="./dep.js"></script>
+    <script src="./watcher.js"></script>
+    <script src="./observer.js"></script>
+    <script src="./index.js"></script>
 
-  <script  >
-    let app=new Vue({
-      data:{
-        name:'樱木',
-        age:18,
-        info:'火影忍者'
-      },
-      computed:{
-        msg(){
-          return this.name+this.age;
+    <script>
+      let app = new Vue({
+        data: {
+          name: "樱木",
+          age: 18,
+          info: "火影忍者"
         },
-        newMsg(){
-          return `新计算属性： ${this.msg}, ${this.info}`
+        watch: {
+          age(newValue, oldValue) {
+            console.log("this======>: ", this);
+            this.name = "大猩猩";
+          }
+        },
+        computed: {
+          msg() {
+            return this.name + this.age;
+          }
+          // newMsg(){
+          //   return `新计算属性： ${this.msg}, ${this.info}`
+          // }
         }
-      }
-    });
-    app.$mount('app')
-    console.log('app: ', app);
-    setTimeout(() => {
-      // app.name='7788';
-      app.age=26
-    }, 2000);
-    setTimeout(() => {
-      app.name='流川枫';
-      // app.age=26
-    }, 6000);
+      });
+      app.$mount("app");
+      console.log("app: ", app);
+      // setTimeout(() => {
+      //   app.age = 26;
+      //   app.name = "流川枫";
+      // }, 2000);
+      // setTimeout(() => {
+      //   app.name = "流川枫";
+      //   // app.age=26
+      // }, 6000);
 
-    // new Watcher(app,'age',()=>{
-    //   console.log('年龄更新')
-    // })
-  
-    
-  </script>
-</body>
+      // new Watcher(app,'age',()=>{
+      //   console.log('年龄更新')
+      // })
+    </script>
+  </body>
 </html>
