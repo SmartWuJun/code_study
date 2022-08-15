@@ -3,7 +3,8 @@ class Dep {
   target = null;
   subs = [];
   constructor() {
-    this.id = uid++
+    this.id = uid++;
+    this.subs = [];
   }
   notify () {
     this.subs.forEach(v => v.update())

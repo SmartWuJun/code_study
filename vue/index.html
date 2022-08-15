@@ -22,27 +22,46 @@
       data:{
         name:'樱木',
         age:18,
-        info:'火影忍者'
-      },
-      computed:{
-        msg(){
-          return this.name+this.age;
-        },
-        newMsg(){
-          return `新计算属性： ${this.msg}, ${this.info}`
+        info:'火影忍者',
+        obj:{
+          name:'张三'
         }
-      }
+      },
+      // computed:{
+      //   msg(){
+      //     return this.name+this.age;
+      //   },
+      //   newMsg(){
+      //     return `新计算属性： ${this.msg}, ${this.info}`
+      //   }
+      // }
     });
     app.$mount('app')
     console.log('app: ', app);
     setTimeout(() => {
       // app.name='7788';
-      app.age=26
+      // app.age=26
+      app.obj.name='樱木花道';
+      
+    }, 1000);
+    setTimeout(() => {
+      // app.name='7788';
+      // app.age=26
+      // app.obj.xxx='动态属性';
+      app.$set(app.obj,'xxx','动态属性')
+      
     }, 2000);
     setTimeout(() => {
-      app.name='流川枫';
+      // app.name='7788';
       // app.age=26
-    }, 6000);
+      app.obj.xxx='动态属性-二次修改';
+      // app.$set(app.obj,'xxx','动态属性')
+      
+    }, 3000);
+    // setTimeout(() => {
+    //   app.name='流川枫';
+    //   // app.age=26
+    // }, 6000);
 
     // new Watcher(app,'age',()=>{
     //   console.log('年龄更新')
